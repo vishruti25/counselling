@@ -35,7 +35,7 @@ function Home() {
                 {data.map((d,i) => (
                     <tr key={i}>
                         <td>{d.id}</td>
-                        <td>{d.name}</td>
+                        <td>{d.username}</td>
                         <td>{d.email}</td>
                         <td >
                             <Link  className='text-decoration-none btn btn-sm btn-success' to={`/update/${d.id}`}>Update</Link>

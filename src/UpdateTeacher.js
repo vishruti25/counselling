@@ -4,19 +4,19 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 
 
-function Update() {
+function Updatet() {
 
     const {id} =useParams();
 
     const [inputData,setInputData]=useState({
         id: id,
-        username: '',
+        name: '',
         email:''
       })
       const navigate = useNavigate();
 
       useEffect(( ) =>{
-        axios.get('http://localhost:8090/api/collections/student/records/'+id)
+        axios.get('http://localhost:8090/api/collections/teacher/records/'+id)
         .then(res => setInputData(res.data))
         .catch(err => console.log(err))
       },[])
@@ -25,10 +25,10 @@ function Update() {
 
       const handleSubmit =(event) =>{
         event.preventDefault();
-        axios.patch('http://localhost:8090/api/collections/student/records/'+id , inputData)
+        axios.patch('http://localhost:8090/api/collections/teacher/records/'+id , inputData)
         .then(res => {
             alert("Data updated Successfully...")
-            navigate('/admins')
+            navigate('/admint')
         })
     }
 
@@ -45,8 +45,8 @@ function Update() {
           
           <div>
             <lable htmlFor='name'>Name:</lable>
-            <input type='text' name='username' className='form-control' placeholder='enter your name' value={inputData.username}
-            onChange={e => setInputData({...inputData, username: e.target.value})}/>
+            <input type='text' name='name' className='form-control' placeholder='enter your name' value={inputData.name}
+            onChange={e => setInputData({...inputData, name: e.target.value})}/>
           </div>
           <div>
             <lable htmlFor="email">Email:</lable>
@@ -61,4 +61,4 @@ function Update() {
   )
 }
 
-export default Update
+export default Updatet

@@ -4,19 +4,19 @@ import {  useNavigate } from 'react-router-dom';
 
 
 
-function Make() {
+function CreateTeacher() {
   const [inputData,setInputData]=useState({
-    username: '',
+    name: '',
     email:''
   })
   const navigate = useNavigate()
 
   const handleSubmit =(event) =>{
     event.preventDefault();
-    axios.post('http://localhost:8090/api/collections/student/records',inputData)
+    axios.post('http://localhost:8090/api/collections/teacher/records',inputData)
     .then(res => {
       alert("Data Posted Successfully!")
-      navigate('/admins')
+      navigate('/admint')
 
 
 
@@ -37,8 +37,8 @@ function Make() {
         <form onSubmit={handleSubmit}>
           <div>
             <lable htmlFor='name'>User Name:</lable>
-            <input type='text' name='username' className='form-control' placeholder='enter your name'
-            onChange={e => setInputData({...inputData, username:e.target.value})}/>
+            <input type='text' name='name' className='form-control' placeholder='enter your name'
+            onChange={e => setInputData({...inputData, name:e.target.value})}/>
           </div><br></br>
           <div>
             <lable htmlFor="email">Email:</lable>
@@ -59,4 +59,4 @@ function Make() {
   )
 }
 
-export default Make
+export default CreateTeacher
